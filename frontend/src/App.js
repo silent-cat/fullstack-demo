@@ -1,40 +1,14 @@
+import Note from './components/Note'
 
-import { useState } from "react"
-const Display = (props) => {
-  return (
-    <div>{props.counter}</div>
-  )
-}
-const Button = ({ onClick, text }) => (
-  <button onClick={onClick}>
-    {text}
-  </button>
-)
-
-const App = () => {
-  const [ counter, setCounter ] = useState(0)
-
-  const increaseByOne = () => setCounter(counter + 1)
-  const decreaseByOne = () => setCounter(counter - 1)
-  const setToZero = () => setCounter(0)
-
+const App = ({ notes }) => {
   return (
     <div>
-      <Display counter={counter}/>
-      <Button
-        onClick={increaseByOne}
-        text='plus'
-      />
-      <Button
-        onClick={setToZero}
-        text='zero'
-      />
-      <Button
-        onClick={decreaseByOne}
-        text='minus'
-      />
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => <Note key={note.id} note={note} />)}
+      </ul>
     </div>
   )
 }
 
-export default App;
+export default App
